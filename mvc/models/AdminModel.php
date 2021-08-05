@@ -67,5 +67,63 @@ class AdminModel extends DB{
         }
         return $result;
     }
+
+    function InsertChild($name,$id_parent){ //Them moi danh muc con
+        $query = "insert into categorychild (name_child,id_parent) values ('$name','$id_parent')";
+        $result = false;
+        if (mysqli_query($this->connect, $query)){
+            $result =true;
+        }
+        return $result;
+    }
+
+    function EditChild($id,$name,$id_parent){ //chinh sua danh muc con
+        $query = 'update categorychild set name_child="'.$name.'",id_parent='.$id_parent.' where id_child='.$id.'';
+        $result = false;
+        if (mysqli_query($this->connect, $query)){
+            $result =true;
+        }
+        return $result;
+    }
+
+    function DeleteChild($id){ //xoa sua danh muc con
+        $query = 'delete from categorychild where id_child='.$id.'';
+        $result = false;
+        if (mysqli_query($this->connect, $query)){
+            $result =true;
+        }
+        return $result;
+    }
+
+    function GetChildWhereID($id){ //Lay danh muc con theo id
+        $query = 'select * from categorychild where id_child='.$id.'';
+        $rows= mysqli_query($this->connect, $query);
+         $data = [];
+         while ($row = mysqli_fetch_array($rows)){
+             $data[]=$row;
+         }
+         return $data;
+    }
+
+    function GetItem(){ //Lay danh sach item
+        $query = 'select item.* ,categorychild.name_child FROM item INNER JOIN categorychild on item.id_child=categorychild.id_child';
+        $rows= mysqli_query($this->connect, $query);
+         $data = [];
+         while ($row = mysqli_fetch_array($rows)){
+             $data[]=$row;
+         }
+         return $data;
+    }
+
+    function InsertItem($name,$description,$img_main,$img_extra,$configitem,$link,$trailer,$id_child){ //Them moi item
+        $created_at = $updated_at = date('Y-m-d H:s:i');
+        $query = "insert into item (name,description,img_main,img_extra,config,link,trailer,id_child,created_at,updated_at)
+         values ('$name','$description','$img_main','$img_extra','$configitem','$link','$trailer',$id_child,'$created_at','$updated_at')";
+        $result = false;
+        if (mysqli_query($this->connect, $query)){
+            $result =true;
+        }
+        return $result;
+    }
 }
 ?>

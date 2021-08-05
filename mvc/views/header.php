@@ -3,7 +3,7 @@
             <!-- Classy Menu -->
             <nav class="classy-navbar" id="essenceNav">
                 <!-- Logo -->
-                <a class="nav-brand" href="index.html"><img src="<?php echo BASE_URL;?>/public/img/core-img/logo.png" style="width:100px" alt=""></a>
+                <a class="nav-brand" href="<?php echo BASE_URL;?>/Home"><img src="<?php echo BASE_URL;?>/public/img/core-img/logo.png" style="width:100px" alt=""></a>
                 <!-- Navbar Toggler -->
                 <div class="classy-navbar-toggler">
                     <span class="navbarToggler"><span></span><span></span><span></span></span>
@@ -19,43 +19,30 @@
                         <ul>
                             <li><a href="#">Games</a>
                                 <div class="megamenu">
-                                    <ul class="single-mega cn-col-4">
-                                        <li class="title">Women's Collection</li>
-                                        <li><a href="shop.html">Dresses</a></li>
-                                        <li><a href="shop.html">Blouses &amp; Shirts</a></li>
-                                        <li><a href="shop.html">T-shirts</a></li>
-                                        <li><a href="shop.html">Rompers</a></li>
-                                        <li><a href="shop.html">Bras &amp; Panties</a></li>
-                                    </ul>
-                                    <ul class="single-mega cn-col-4">
-                                        <li class="title">Men's Collection</li>
-                                        <li><a href="shop.html">T-Shirts</a></li>
-                                        <li><a href="shop.html">Polo</a></li>
-                                        <li><a href="shop.html">Shirts</a></li>
-                                        <li><a href="shop.html">Jackets</a></li>
-                                        <li><a href="shop.html">Trench</a></li>
-                                    </ul>
-                                    <ul class="single-mega cn-col-4">
-                                        <li class="title">Kid's Collection</li>
-                                        <li><a href="shop.html">Dresses</a></li>
-                                        <li><a href="shop.html">Shirts</a></li>
-                                        <li><a href="shop.html">T-shirts</a></li>
-                                        <li><a href="shop.html">Jackets</a></li>
-                                        <li><a href="shop.html">Trench</a></li>
-                                    </ul>
+                                    <?php
+                                    $row_parent = $data['home_parent'];
+                                    for ($i=0;$i<count($row_parent);$i++){
+                                        echo '<ul class="single-mega cn-col-4">
+                                                <li class="title">'.$row_parent[$i]['name_parent'].'</li>';
+                                                $child = new HomeModel;
+                                                $row_child = $child->GetMenuChild($row_parent[$i]['id_parent']);
+                                                for ($j=0;$j<count($row_child);$j++){
+                                                    echo '<li><a href="">'.$row_child[$j]['name_child'].'</a></li>';
+                                                }
+                                        echo  '</ul>';
+                                    }
+                                    ?>
                                     
                                 </div>
                             </li>
                             <li><a href="#">Phần Mềm</a>
                                 <ul class="dropdown">
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="shop.html">Shop</a></li>
-                                    <li><a href="single-product-details.html">Product Details</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
-                                    <li><a href="blog.html">Blog</a></li>
-                                    <li><a href="single-blog.html">Single Blog</a></li>
-                                    <li><a href="regular-page.html">Regular Page</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <?php
+                                    $row_software = $data['software'];
+                                    for ($k=0;$k<count($row_software);$k++){
+                                        echo '<li><a href="index.html">'.$row_software[$k]['name_child'].'</a></li>';
+                                    }
+                                    ?>
                                 </ul>
                             </li>
                             <li><a href="#">Blog</a></li>
@@ -83,8 +70,7 @@
                     </li>
                     </ul>
                 </div>
-    
-                </div>
+                
             </div>
 
         </div>

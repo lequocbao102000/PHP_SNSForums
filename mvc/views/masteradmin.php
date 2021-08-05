@@ -25,11 +25,11 @@
                             <a class="nav-link" href="<?=BASE_URL?>/Admin/EditCategoryParent">Chỉnh sửa loại</a>
 
                             <div class="sb-sidenav-menu-heading">Quản lý Thể Loại </div>
-                            <a class="nav-link" href="<?=BASE_URL?>/Admin/AddCategoryParent">Thêm thể loại</a>
-                            <a class="nav-link" href="<?=BASE_URL?>/AdminController/EditCategory/">Chỉnh sửa thể loại</a>
+                            <a class="nav-link" href="<?=BASE_URL?>/Admin/AddCategoryChild">Thêm thể loại</a>
+                            <a class="nav-link" href="<?=BASE_URL?>/Admin/EditCategoryChild">Chỉnh sửa thể loại</a>
 
                             <div class="sb-sidenav-menu-heading">Quản lý Games và Phần mềm </div>
-                            <a class="nav-link" href="<?=BASE_URL?>/Admin/AddCategoryParent">Thêm mới</a>
+                            <a class="nav-link" href="<?=BASE_URL?>/Admin/AddItem">Thêm mới</a>
                             <a class="nav-link" href="<?=BASE_URL?>/AdminController/EditCategory/">Chỉnh sửa</a>
 
                             
