@@ -746,7 +746,8 @@ img {
     z-index: 1;
     overflow: hidden; }
     .single-product-wrapper .product-img img {
-      width: 100%;
+      width: 500px;
+      height: 300px;
       -webkit-transition-duration: 500ms;
       transition-duration: 500ms; }
     .single-product-wrapper .product-img .hover-img {
@@ -798,6 +799,7 @@ img {
   .single-product-wrapper .product-description {
     position: relative;
     z-index: 1;
+    text-align: center;
     padding-top: 25px; }
     .single-product-wrapper .product-description span {
       font-size: 10px;

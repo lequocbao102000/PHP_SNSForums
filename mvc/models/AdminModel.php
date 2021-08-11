@@ -125,5 +125,43 @@ class AdminModel extends DB{
         }
         return $result;
     }
+
+    function EditItem($id,$name,$description,$configitem,$link,$trailer,$id_child){ //chinh sua noi dung item
+        $query = 'update item set name="'.$name.'",description="'.$description.'",config="'.$configitem.'",
+        link="'.$link.'",id_child='.$id_child.' where id='.$id.'';
+        $result = false;
+        if (mysqli_query($this->connect, $query)){
+            $result =true;
+        }
+        return $result;
+    }
+
+    function EditHinhItem($id,$img_main,$img_extra){ //chinh sua noi dung hinh item
+        $query = 'update item set img_main="'.$img_main.'",img_extra="'.$img_extra.'" where id='.$id.'';
+        $result = false;
+        if (mysqli_query($this->connect, $query)){
+            $result =true;
+        }
+        return $result;
+    }
+
+    function DeleteItem($id){ //Xoa item
+        $query = 'delete from item where id='.$id.'';
+        $result = false;
+        if (mysqli_query($this->connect, $query)){
+            $result =true;
+        }
+        return $result;
+    }
+
+    function GetItemWhereID($id){ //Lay item theo id
+        $query = 'select * from item where id='.$id.'';
+        $rows= mysqli_query($this->connect, $query);
+         $data = [];
+         while ($row = mysqli_fetch_array($rows)){
+             $data[]=$row;
+         }
+         return $data;
+    }
 }
 ?>

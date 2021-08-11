@@ -30,7 +30,7 @@
 
                             <div class="sb-sidenav-menu-heading">Quản lý Games và Phần mềm </div>
                             <a class="nav-link" href="<?=BASE_URL?>/Admin/AddItem">Thêm mới</a>
-                            <a class="nav-link" href="<?=BASE_URL?>/AdminController/EditCategory/">Chỉnh sửa</a>
+                            <a class="nav-link" href="<?=BASE_URL?>/Admin/EditItem">Chỉnh sửa</a>
 
                             
                             <div class="sb-sidenav-menu-heading">Options </div>

@@ -218,5 +218,96 @@ class Admin extends Controller{
         
     }
 
+    function EditItem(){ //Chinh sua item
+        $list_child = $this->adminmodel->GetMenuChild();
+        $list_item = $this->adminmodel->GetItem();
+        //Neu co edit
+        if (isset($_GET['suaitem'])){
+            if (isset($_POST['btnedititem'])){ //Neu nhan nut save
+                if ($this->adminmodel->EditItem($_GET['suaitem'],$_POST['name_item_edit'],$_POST['des_item_edit'],
+                $_POST['config_item_edit'],$_POST['linkdownload_edit'],$_POST['linktrailer_edit'],$_POST['theloai_edit'])){ //Neu sua thanh cong
+                    header('Location:'.BASE_URL."/Admin/EditItem");
+                }
+                else{ //Sua khong thanh cong
+                    $this->view("masteradmin",[
+                        "admin_page"=>"edititem",
+                        "items"=>$list_item,
+                        "child"=>$list_child
+                    ]);
+                    
+                    echo "<script type='text/javascript'>alert('Sửa không thành công');</script>";
+                }
+            }
+            else{ //khong nhan nut save
+                $get = $this->adminmodel->GetItemWhereID($_GET['suaitem']);
+                $this->view("masteradmin",[
+                    "admin_page"=>"edititem",
+                    "items"=>$list_item,
+                    "child"=>$list_child,
+                    "getitem"=>$get
+                ]);
+            }
+            
+        }
+
+        else if (isset($_GET['xoaitem'])){ //Neu co xoa 
+            if ($this->adminmodel->DeleteItem($_GET['xoaitem'])){ //Neu xoa thanh cong
+                header('Location:'.BASE_URL."/Admin/EditItem");
+            }
+            else{ //Neu xoa khong thanh cong
+                $this->view("masteradmin",[
+                    "admin_page"=>"edititem",
+                    "items"=>$list_item,
+                    "child"=>$list_child
+                ]);
+            }
+        }
+        
+        else if (isset($_GET['hinhanhitem'])){ //Neu chinh sua hinh anh
+            if (isset($_POST['btnedithinhitem'])){ //Neu nhan nut save
+                $arrextraedit[] = $_FILES['img_extra_edit']['name'];
+                $extra ='';
+                for ($i=0;$i<count($arrextraedit[0]);$i++){  //Bien mang thanh chuoi de insert
+                    $extra = $extra."/".$arrextraedit[0][$i];
+                 }
+                if ($this->adminmodel->EditHinhItem($_GET['hinhanhitem'],$_FILES['img_main_edit']['name'],$extra)){ //Neu sua thanh cong
+                    move_uploaded_file($_FILES['img_main_edit']['tmp_name'],"uploads/".$_FILES['img_main_edit']['name'].""); //Them hinh anh vao muc upload
+                    $arrextraedittmp[] = $_FILES['img_extra_edit']['tmp_name']; //Lay danh sach duong dan tam
+                    for ($i=0;$i<count($arrextraedittmp[0]);$i++){ //Them nhieu hinh anh bang cach duyet mang img_extra
+                        move_uploaded_file($arrextraedittmp[0][$i],"uploads/".$arrextraedit[0][$i]."");
+                    }
+                    header('Location:'.BASE_URL."/Admin/EditItem");
+                }
+                else{ //Sua khong thanh cong
+                    $this->view("masteradmin",[
+                        "admin_page"=>"edithinhitem",
+                        "items"=>$list_item,
+                        "child"=>$list_child
+                    ]);
+                    
+                    echo "<script type='text/javascript'>alert('Sửa không thành công');</script>";
+                }
+            }
+            else{ //khong nhan nut save
+                $get = $this->adminmodel->GetItemWhereID($_GET['hinhanhitem']);
+                $this->view("masteradmin",[
+                    "admin_page"=>"edithinhitem",
+                    "items"=>$list_item,
+                    "child"=>$list_child,
+                    "getitem"=>$get
+                ]);
+            }
+        }
+
+        else{ //khong edit
+            $this->view("masteradmin",[
+                "admin_page"=>"edititem",
+                "items"=>$list_item,
+                "child"=>$list_child
+            ]);
+        }
+        
+    }
+
 }
 ?>

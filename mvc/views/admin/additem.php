@@ -75,10 +75,10 @@
 							<th width="50px">STT</th>
 							<th>Tiêu đề</th>
                             <th>Hình đại diện</th>
-                            <th>Mô tả</th>
-                            <th>Cấu hình</th>
+                            
+                            
                             <th>Linkdownload</th>
-                            <th>Linktrailer</th>
+                            
                             <th>Thể loại</th>
                             <th>Thêm mới ngày</th>
                             <th>Cập nhật ngày</th>
@@ -95,10 +95,9 @@
                                     <td>'.($i+1).'</td>
                                     <td>'.$row[$i]['name'].'</td> 
                                     <td><img src="'.BASE_URL.'/uploads/'.$row[$i]['img_main'].'" style="width:100px;height:60px"/></td>
-                                    <td>'.$row[$i]['description'].'</td>
-                                    <td>'.$row[$i]['config'].'</td>
+                                   
                                     <td>'.$row[$i]['link'].'</td>
-                                    <td>'.$row[$i]['trailer'].'</td>
+
                                     <td>'.$row[$i]['name_child'].'</td>
                                     <td>'.$row[$i]['created_at'].'</td>
                                     <td>'.$row[$i]['updated_at'].'</td>

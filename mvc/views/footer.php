@@ -24,6 +24,9 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <h4 class="text-center">Website được tạo ra với mục đích thực hành. Không vì mục đích kinh doanh nào</h4>
+            </div>
 
 
         </div>

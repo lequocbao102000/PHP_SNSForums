@@ -27,7 +27,7 @@
                                                 $child = new HomeModel;
                                                 $row_child = $child->GetMenuChild($row_parent[$i]['id_parent']);
                                                 for ($j=0;$j<count($row_child);$j++){
-                                                    echo '<li><a href="">'.$row_child[$j]['name_child'].'</a></li>';
+                                                    echo '<li><a href="'.BASE_URL.'/Forums?theloai='.$row_child[$j]['id_child'].'">'.$row_child[$j]['name_child'].'</a></li>';
                                                 }
                                         echo  '</ul>';
                                     }
@@ -40,7 +40,7 @@
                                     <?php
                                     $row_software = $data['software'];
                                     for ($k=0;$k<count($row_software);$k++){
-                                        echo '<li><a href="index.html">'.$row_software[$k]['name_child'].'</a></li>';
+                                        echo '<li><a href="'.BASE_URL.'/Forums?theloai='.$row_software[$k]['id_child'].'">'.$row_software[$k]['name_child'].'</a></li>';
                                     }
                                     ?>
                                 </ul>
@@ -55,9 +55,8 @@
 
             <!-- Header Meta Data -->
             <div class="header-meta d-flex clearfix justify-content-end">
-                <!-- Favourite Area -->
                 <div class="favourite-area">
-                    <a href="#"><img src="<?php echo BASE_URL;?>/public/img/core-img/heart.svg" alt=""></a>
+                    <p style="margin-top:20px"><b>Xin chào, <?php echo $_SESSION['fullname'];?></b></p>
                 </div>
                 <!-- User Login Info -->
                 <div class="user-login-info">
@@ -65,6 +64,7 @@
                     <ul>
                     <li><a href="#"><img src="<?php echo BASE_URL;?>/public/img/core-img/user.svg" alt=""></a>
                         <ul class="dropdown">
+                            <li><a href="#"><img src="<?php echo BASE_URL;?>/public/img/core-img/heart.svg" alt=""></a></li>
                             <li><a href="<?php echo BASE_URL;?>/Account/Logout">Logout</a></li>
                         </ul>
                     </li>

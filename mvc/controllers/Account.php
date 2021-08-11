@@ -18,6 +18,7 @@ class Account extends Controller{
             if (count($result)>0){ //Neu tai khoan co trong danh sach
                 if (password_verify($password,$result[0]['password'])){ //kiem tra password
                     $_SESSION['username'] = $result[0]['username'];
+                    $_SESSION['fullname'] = $result[0]['fullname'];
                     $_SESSION['check'] = true;
                     if ($_SESSION['username']=="admin"){ //Kiem tra co phai admin k?
                         header('Location:'.BASE_URL."/Admin");
@@ -94,6 +95,7 @@ class Account extends Controller{
     function Logout(){
         unset ($_SESSION['username']);
         unset ($_SESSION['check']);
+        unset ($_SESSION['fullname']);
 
         header('Location:'.BASE_URL);
     }
