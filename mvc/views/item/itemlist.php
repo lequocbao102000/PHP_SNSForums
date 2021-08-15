@@ -36,7 +36,7 @@
 
                             <!-- Product Description -->
                             <div class="product-description">
-                                <a href="single-product-details.html">
+                                <a href="'.BASE_URL.'/Forums/Item?item='.$row[$i]['id'].'">
                                     <h5>'.$row[$i]['name'].'</h5>
                                 </a>
                             </div>

@@ -64,7 +64,7 @@
                     <ul>
                     <li><a href="#"><img src="<?php echo BASE_URL;?>/public/img/core-img/user.svg" alt=""></a>
                         <ul class="dropdown">
-                            <li><a href="#"><img src="<?php echo BASE_URL;?>/public/img/core-img/heart.svg" alt=""></a></li>
+                            <li><a href="<?php echo BASE_URL;?>/User"><img src="<?php echo BASE_URL;?>/public/img/core-img/heart.svg" alt=""></a></li>
                             <li><a href="<?php echo BASE_URL;?>/Account/Logout">Logout</a></li>
                         </ul>
                     </li>

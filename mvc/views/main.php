@@ -50,7 +50,7 @@
                                    
                                     <div class="product-description">
                                         <span>'.$row[$i]['luotlike'].' lượt thích</span>
-                                        <a href="single-product-details.html">
+                                        <a href="'.BASE_URL.'/Forums/Item?item='.$row[$i]['id'].'">
                                             <h6>'.$row[$i]['name'].'</h6>
                                         </a>
                                     
@@ -68,6 +68,7 @@
            
 
                 <div class="section-heading text-center">
+                        <hr>
                         <h2>Top 10 Mới nhất</h2>
                     </div>
 
@@ -87,7 +88,7 @@
                                    
                                     <div class="product-description">
                                         <span>New</span>
-                                        <a href="single-product-details.html">
+                                        <a href="'.BASE_URL.'/Forums/Item?item='.$row[$i]['id'].'">
                                             <h6>'.$row[$i]['name'].'</h6>
                                         </a>
                                     

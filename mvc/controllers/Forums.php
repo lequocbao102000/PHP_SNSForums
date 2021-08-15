@@ -50,5 +50,43 @@ class Forums extends Controller{
         }
         
     }
+
+    function Item(){
+        $list_parent = $this->homemodel->GetMenuParent();
+        $list_software = $this->homemodel->GetMenuChild2();
+        if (isset($_GET['item'])){
+            if (is_numeric($_GET['item'])&&$_GET['item']>0){
+                $item_detail = $this->forummodel->GetItemDetail($_GET['item']);
+                $this->view("itemdetail",[
+                    "home_parent" => $list_parent,
+                    "software"=>$list_software,
+                    "detail" => $item_detail
+        
+                ]);
+            }
+            else{
+                header ('Location:'.BASE_URL);
+            }
+        }
+        else{
+            header ('Location:'.BASE_URL);
+        }
+       
+    }
+
+    function Like(){
+        if (isset($_GET['like'])){
+            if ($this->forummodel->LikeItem($_GET['like'],$_SESSION['username'])){
+                $_SESSION['checklike']=true;
+            }
+            else{
+                $_SESSION['checklike']=false;
+            }
+            header('Location:'.BASE_URL.'/Forums/Item?item='.$_GET['like']);
+        }
+        else{
+            header('Location:'.BASE_URL);
+        }
+    }
 }
 ?>

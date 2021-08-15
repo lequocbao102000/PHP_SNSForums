@@ -42,7 +42,7 @@
             navText: ["<img src='img/core-img/long-arrow-left.svg' alt=''>", "<img src='img/core-img/long-arrow-right.svg' alt=''>"],
             dots: false,
             autoplay: true,
-            autoplayTimeout: 5000,
+            autoplayTimeout: 3000,
             smartSpeed: 1000
         });
     }
